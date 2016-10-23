@@ -1,6 +1,4 @@
-package hello;
-
-import app.QueryBuilder;
+package app;
 
 import java.io.IOException;
 

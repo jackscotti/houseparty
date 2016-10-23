@@ -4,6 +4,7 @@ import com.esotericsoftware.yamlbeans.YamlReader;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -21,21 +22,19 @@ public class QueryBuilder {
 
     public String build() throws IOException {
 
-        String query = ROOT_URL;
+        ArrayList<String> queryParts = new ArrayList<>();
 
         Iterator<HashMap.Entry<String, String>> entries = params().entrySet().iterator();
         while (entries.hasNext()) {
             HashMap.Entry<String, String> entry = entries.next();
-            query += entry.getKey();
-            query += "=";
-            query += entry.getValue();
-            query += "&";
+
+            queryParts.add(entry.getKey() + "=" + entry.getValue());
         }
 
-        return query;
+        return ROOT_URL + String.join("&", queryParts);
     }
 
-    private HashMap params() throws IOException {
+    public HashMap params() throws IOException {
         YamlReader reader = new YamlReader(new FileReader(SEARCH_PARAMS_PATH));
         HashMap<String, String> searchParams = (HashMap) reader.read();
 
