@@ -1,0 +1,14 @@
+---
+radius: 0.1 # Compulsory: Minimum radius 0.1 miles, maximum radius is 40 miles.
+order_by: "age"
+listing_status: "rent"
+area: "london"
+include_sold: 0
+include_rented: 0
+minimum_price: 300 # per week price
+maximum_price: 500 # per week price
+minimum_beds: 4
+maximum_beds: 4
+furnished: "furnished"
+page_size: 100 # 10 minimum - 100 maximum
+summarised: "yes"
